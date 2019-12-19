@@ -4,6 +4,7 @@ main() {
   calcImc();
 }
 
+// pega os valores
 calcImc() {
   print('***** CALCULO IMC *****');
   print('');
@@ -15,13 +16,19 @@ calcImc() {
   print('Digite seu peso: ');
   var peso = int.parse(stdin.readLineSync());
 
-  var imc = peso / (altura * altura);
+  var imc = operacao(peso, altura);
   print('');
 
-  printResult(imc);
+  result(imc);
 }
 
-printResult(imc) {
+// faz o calculo
+operacao(peso, altura) {
+  return peso / (altura * altura);
+}
+
+// faz a validação da faixa imc
+result(imc) {
   if (imc > 40) {
     print('seu IMC esta em: ${imc} vc esta com obesidade de grau 3');
   } else if (35 <= imc && imc <= 39.9) {
