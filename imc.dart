@@ -1,22 +1,30 @@
 import "dart:io";
 
 main() {
+  calcImc();
+}
+
+calcImc() {
   print('***** CALCULO IMC *****');
   print('');
 
   print('Digite sua altura: ');
   var altura = double.parse(stdin.readLineSync());
   print('');
-  
+
   print('Digite seu peso: ');
   var peso = int.parse(stdin.readLineSync());
 
   var imc = peso / (altura * altura);
   print('');
-  
-  if(imc > 40){
+
+  printResult(imc);
+}
+
+printResult(imc) {
+  if (imc > 40) {
     print('seu IMC esta em: ${imc} vc esta com obesidade de grau 3');
-  } else if ( 35 <= imc && imc <= 39.9) {
+  } else if (35 <= imc && imc <= 39.9) {
     print('seu IMC esta em: ${imc} vc esta com obesidade de grau 2');
   } else if (30 <= imc && imc <= 34.9) {
     print('seu IMC esta em: ${imc} vc esta com obesidade de grau 1');
@@ -28,6 +36,4 @@ main() {
     print('Atencao vc esta abaixo do peso ideal');
   }
   print('');
-
-
 }
