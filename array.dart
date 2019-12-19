@@ -1,7 +1,7 @@
 import "dart:io";
 
 main() {
-  var nome = [];
+  var nome = ['Fred', 'Aline', 'Valentina'];
 
   while (true) {
     print('==== Digite um nome ====');
@@ -15,4 +15,15 @@ main() {
       print('\n $nome \n');
     }
   }
+  print('\n $nome \n');
+
+  print('***** Sem Fred *****\n');
+  //remove do array por valor
+  nome.remove('Fred');
+  print('\n$nome\n');
+
+  //remove do array por posicao
+  nome.removeAt(0);
+  print('***** Sem Posicao 0 *****\n');
+  print('$nome\n');
 }
