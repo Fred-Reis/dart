@@ -48,6 +48,7 @@ main() {
         int removeProdu = int.parse(stdin.readLineSync());
         produtos.removeAt(removeProdu - 1);
       }
+      print('\n==> ITEM REMOVIDO <==');
     } else {
       // para limpar o terminal
       print('\x1B[2J\x1B[0;0H');
