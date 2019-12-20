@@ -1,7 +1,9 @@
 import "dart:io";
 
 main() {
-  var nome = ['Fred', 'Aline', 'Valentina'];
+  // tipando array List<>
+
+  List<String> nome = ['Fred', 'Aline', 'Valentina'];
 
   while (true) {
     print('==== Digite um nome ====');
