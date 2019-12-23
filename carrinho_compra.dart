@@ -1,7 +1,9 @@
 import 'dart:io';
 
+// variavel declarada global
+List<String> produtos = [];
+
 main() {
-  List<String> produtos = [];
 
   while (true) {
     print('\n==== CARRINHO DE COMPRAS ====\n');
@@ -17,12 +19,59 @@ main() {
       print('\n==== Lista finalizada ====\n');
       print(produtos);
       break;
+    
     } else if (option == '2') {
-      print('\n==== Sua lista possui os seguintes produtos ====\n');
-      for (var c = 0; c < produtos.length; c++) {
+      
+      onScreen();
+    
+    } else if (option == '1') {
+     
+      add();
+    
+    } else if (option == '3') {
+     
+      remo();
+    
+    } else {
+      // para limpar o terminal
+      print('\x1B[2J\x1B[0;0H');
+      print('\n[ERRO] opção inválida, repita a operação!\n');
+    }
+  }
+}
+
+//funcao pra imprimir itens da lista com posicionamento
+printar(){
+  for (var c = 0; c < produtos.length; c++) {
         print('Item ${c + 1} => ${produtos[c]}');
       }
-    } else if (option == '1') {
+}
+
+// funcao para remover produtos
+remo(){
+      print('\x1B[2J\x1B[0;0H');
+      print('==== Como você quer fazer essa exclusão ====\n');
+      print('=> Digite 1 se você quiser excluir por nome do produto');
+      print('=> Digite 2 se você quiser excluir por posição na lista');
+      
+      var excluir = stdin.readLineSync();
+      
+      printar();
+      if (excluir == '1') {
+        print('=> Qual o nome do produto?\n');
+        String removeProdu = stdin.readLineSync();
+        produtos.remove(removeProdu);
+     
+      } else if (excluir == '2') {
+        print('=> Qual a posição do produto?\n');
+        int removeProdu = int.parse(stdin.readLineSync());
+        produtos.removeAt(removeProdu - 1);
+      }
+      print('\n==> ITEM REMOVIDO <==');
+}
+
+// funcao para adicionar produtos
+add(){
       // para limpar o terminal
       print('\x1B[2J\x1B[0;0H');
       print('\n==== Digite sua opção ====\n');
@@ -30,29 +79,11 @@ main() {
       produtos.add(produto);
       // para limpar o terminal
       print('\x1B[2J\x1B[0;0H');
-    } else if (option == '3') {
-      print('\x1B[2J\x1B[0;0H');
-      print('==== Comoo você quer fazer essa exclusão ====\n');
-      print('=> Digite 1 se você quiser excluir por nome do produto');
-      print('=> Digite 2 se você quiser excluir por posição na lista');
-      var excluir = stdin.readLineSync();
-      for (var c = 0; c < produtos.length; c++) {
-        print('Item ${c + 1} => ${produtos[c]}');
-      }
-      if (excluir == '1') {
-        print('=> Qual o nome do produto?\n');
-        String removeProdu = stdin.readLineSync();
-        produtos.remove(removeProdu);
-      } else if (excluir == '2') {
-        print('=> Qual a posição do produto?\n');
-        int removeProdu = int.parse(stdin.readLineSync());
-        produtos.removeAt(removeProdu - 1);
-      }
-      print('\n==> ITEM REMOVIDO <==');
-    } else {
-      // para limpar o terminal
-      print('\x1B[2J\x1B[0;0H');
-      print('\n[ERRO] opção inválida, repita a operação!\n');
-    }
-  }
+}
+
+//funcao para imprimir itens na tela
+onScreen(){
+  print('\n==== Sua lista possui os seguintes produtos ====\n');
+  printar();
+
 }
