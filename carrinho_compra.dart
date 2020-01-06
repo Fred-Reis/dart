@@ -14,8 +14,8 @@ main() {
     var option = stdin.readLineSync();
 
     if (option == 'sair') {
-      // para limpar o terminal
-      print('\x1B[2J\x1B[0;0H');
+      
+      print('\x1B[2J\x1B[0;0H');// para limpar o terminal
       print('\n==== Lista finalizada ====\n');
       print(produtos);
       break;
